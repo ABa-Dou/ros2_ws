@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>robot_driver</name>
+  <version>0.0.0</version>
+  <description>Robot driver node with protocol parsing and ROS2 publishing</description>
+  <maintainer email="todo@todo.com">user</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>sensor_msgs</depend>
+  <depend>robot_interfaces</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
