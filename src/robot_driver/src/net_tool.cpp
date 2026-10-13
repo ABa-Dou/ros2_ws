@@ -1,10 +1,19 @@
-#include "net_tool.hpp"
+#include "robot_driver/net_tool.hpp"
 
 namespace net_tool {
     bool create_tcp_socket(int& sockfd){
         sockfd = ::socket(AF_INET, SOCK_STREAM, 0);
         if (sockfd < 0) {
             std::cerr << "[ERROR] socket create failed\n";
+            return false;
+        }
+        return true;
+    }
+
+    bool set_socket_reuseaddr(int sockfd) {
+        int opt = 1;
+        if (::setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) < 0) {
+            std::cerr << "[ERROR] SO_REUSEADDR failed\n";
             return false;
         }
         return true;

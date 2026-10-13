@@ -100,7 +100,7 @@ namespace protocol{
         frame.timestamp = timestamp;
 
         switch (frame.type) {
-            case FrameType::Speed:{
+            case FrameType::SPEED:{
                 if (payload_len < 16) {
                     buffer_.erase(buffer_.begin(), buffer_.begin() + 2);
                     return std::nullopt;
@@ -113,7 +113,7 @@ namespace protocol{
                 if (on_speed) on_speed(frame.speed, seq, timestamp);
                 break;
             }
-            case FrameType::Pulse:{
+            case FrameType::PULSE:{
                 if (payload_len < 16) {
                     buffer_.erase(buffer_.begin(), buffer_.begin() + 2);
                     return std::nullopt;
@@ -126,7 +126,7 @@ namespace protocol{
                 if (on_pulse) on_pulse(frame.pulse, seq, timestamp);
                 break;
             }
-            case FrameType::Imu:{
+            case FrameType::IMU:{
                 if (payload_len < 24) {
                     buffer_.erase(buffer_.begin(), buffer_.begin() + 2);
                     return std::nullopt;
@@ -141,7 +141,7 @@ namespace protocol{
                 if (on_imu) on_imu(frame.imu, seq, timestamp);
                 break;
             }
-            case FrameType::Lidar:{
+            case FrameType::LIDAR:{
                 if (payload_len < 2) {
                     buffer_.erase(buffer_.begin(), buffer_.begin() + 2);
                     return std::nullopt;
@@ -162,7 +162,7 @@ namespace protocol{
                 if (on_lidar) on_lidar(frame.lidar, seq, timestamp);
                 break;
             }
-            case FrameType::Pid:{
+            case FrameType::PID:{
                 if (payload_len < 112) {
                     buffer_.erase(buffer_.begin(), buffer_.begin() + 2);
                     return std::nullopt;

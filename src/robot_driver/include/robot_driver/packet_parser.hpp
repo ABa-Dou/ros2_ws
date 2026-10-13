@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include <functional>
+#include <optional>
+#include <cstring>
 #include "easy_log.hpp"
 namespace protocol{
     enum class FrameType : uint8_t {

@@ -98,6 +98,14 @@ void RobotDriverNode::publish_lidar(const protocol::LidarData& d, uint8_t seq, u
     lidar_pub_->publish(msg);
 }
 
+builtin_interfaces::msg::Time RobotDriverNode::ms_to_stamp(uint32_t ms) const
+{
+    builtin_interfaces::msg::Time stamp;
+    stamp.sec = ms / 1000;
+    stamp.nanosec = (ms % 1000) * 1000000;
+    return stamp;
+}
+
 void RobotDriverNode::publish_pid(const protocol::PidData& d, uint8_t seq, uint32_t ts)
 {
     auto msg = robot_interfaces::msg::PidGains();
